@@ -133,12 +133,7 @@ gist::_constructBpMap(
         streampos pos = bpStream.tellg(); // position of next BP
 	int klen;
 
-// VCPORT_B
-#ifdef WIN32
 	bpStream.read((char *) &klen, sizeof(klen));
-#else
-	bpStream.read((void *) &klen, sizeof(klen));
-#endif
 // VCPORT_E
 
 	if (bpStream.fail()) {
@@ -324,11 +319,7 @@ gist::_optBpStream(
     s.seekg(info->loc.fileLoc, ios::beg);
 
 // VCPORT_B
-#ifdef WIN32
 	s.read((char *) &klen, sizeof(klen));
-#else
-    s.read((void *) &klen, sizeof(klen));
-#endif
 // VCPORT_E
 
     if (s.bad()) {
@@ -336,23 +327,11 @@ gist::_optBpStream(
         return(eFILEERROR);
     }
 
-// VCPORT_B
-#ifdef WIN32
 	s.read((char *)key, klen);
-#else
-	s.read(key, klen);
-#endif
-// VCPORT_E
     
     dlen = 0;
 
-// VCPORT_B
-#ifdef WIN32
     s.read((char *) &child, sizeof(child));
-#else
-    s.read((void *) &child, sizeof(child));
-#endif
-// VCPORT_E
 
     if (!(s.eof() || s.good())) {
         return(eFILEERROR);
@@ -368,12 +347,7 @@ tstr(ifstream& s, streampos loc)
     streampos oldpos = s.tellg();
     s.seekg(loc);
 
-// VCPORT_B
-#ifdef WIN32
 	s.read((char *) &x, sizeof(x));
-#else
-    s.read((void *) &x, sizeof(x));
-#endif
 // VCPORT_E
 
     streampos pos = s.tellg();

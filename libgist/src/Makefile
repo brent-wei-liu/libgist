@@ -5,7 +5,7 @@
 include Makefile.inc
 
 all: CMDLINE AMDB
-
+#all: CMDLINE
 cmdline: CMDLINE
 
 amdb: AMDB

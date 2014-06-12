@@ -11,7 +11,7 @@ include $(LIBGISTHOME)/src/Makefile.paths.$(SYSTEM).$(ARCH)
 #
 # we build for amdb
 #
-AMDB = true
+AMDB = false
 
 #
 # if you're using this makefile, you must be using unix.

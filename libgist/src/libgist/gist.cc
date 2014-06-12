@@ -1988,33 +1988,21 @@ gist::_readBpFromTemp(
 
 // VCPORT_B
 // WIN32 API expects (char *) not (void *)
-#ifdef WIN32
 	s->read((char *) &klen, sizeof(klen));
-#else
-    s->read((void *) &klen, sizeof(klen));
-#endif
 // VCPORT_E
 
     if (s->eof()) return(eEOF);
 
 // VCPORT_B
 // WIN32 API expects (char *) not (void *)
-#ifdef WIN32
 	s->read((char *) key, klen);
-#else
-    s->read(key, klen);
-#endif
 // VCPORT_E
 
     dlen = 0;
 
 // VCPORT_B
 // WIN32 API expects (char *) not (void *)
-#ifdef WIN32
 	s->read((char *) &child, sizeof(child));
-#else
-    s->read((void *) &child, sizeof(child));
-#endif
 // VCPORT_E
 
     if (!s->eof() && !s->good()) return(eFILEERROR);
